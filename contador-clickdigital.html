@@ -76,19 +76,19 @@
 
     <div class="countdown-timer" id="countdown">
       <div class="countdown-box">
-        <div class="countdown-number" id="days">76</div>
+        <div class="countdown-number" id="days">00</div>
         <div class="countdown-label">DIAS</div>
       </div>
       <div class="countdown-box">
-        <div class="countdown-number" id="hours">01</div>
+        <div class="countdown-number" id="hours">00</div>
         <div class="countdown-label">HRS</div>
       </div>
       <div class="countdown-box">
-        <div class="countdown-number" id="minutes">48</div>
+        <div class="countdown-number" id="minutes">00</div>
         <div class="countdown-label">MIN</div>
       </div>
       <div class="countdown-box">
-        <div class="countdown-number" id="seconds">55</div>
+        <div class="countdown-number" id="seconds">00</div>
         <div class="countdown-label">SEG</div>
       </div>
     </div>
@@ -97,7 +97,7 @@
   </div>
 
   <script>
-    const targetDate = new Date("2025-08-22T14:00:00");
+    const targetDate = new Date("2025-08-22T14:00:00-03:00");
 
     function updateCountdown() {
       const now = new Date();
@@ -117,6 +117,21 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
+
+<script>
+  const iframe = document.getElementById('contador');
+  const showAfterScrollY = 300;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > showAfterScrollY) {
+      iframe.style.opacity = "1";
+      iframe.style.pointerEvents = "auto";
+    } else {
+      iframe.style.opacity = "0";
+      iframe.style.pointerEvents = "none";
+    }
+  });
+</script>
 
 </body>
 </html>
