@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contador de Evento</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .countdown-bar {
+      background-color: #0033ff;
+      color: white;
+      padding: 16px 30px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 85px;
+    }
+
+    .countdown-label-text {
+      font-size: 18px;
+      font-weight: bold;
+      justify-self: start;
+    }
+
+    .countdown-timer {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .countdown-box {
+      text-align: center;
+    }
+
+    .countdown-number {
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-top: 4px;
+    }
+
+    .cta-button {
+      background-color: white;
+      color: #000;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+      font-size: 15px;
+      justify-self: end;
+    }
+
+    .cta-button:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="countdown-bar">
+    <div class="countdown-label-text">O evento começa em:</div>
+    <div class="countdown-timer" id="countdown">
+      <div class="countdown-box">
+        <div class="countdown-number" id="days">00</div>
+        <div class="countdown-label">DIAS</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="hours">00</div>
+        <div class="countdown-label">HRS</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="minutes">00</div>
+        <div class="countdown-label">MIN</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="seconds">00</div>
+        <div class="countdown-label">SEG</div>
+      </div>
+    </div>
+    <a href="https://checkout.payt.com.br/b3de4c09290f03a29836f8ef47429108" class="cta-button" target="_blank" rel="noopener noreferrer">Garantir ingresso</a>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-08-22T14:00:00-03:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      document.getElementById("days").textContent = days.toString().padStart(2, "0");
+      document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+      document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+      document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
